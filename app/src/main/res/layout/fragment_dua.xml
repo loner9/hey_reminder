@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="info.project.hey.Fragments.DuaFragment">
+    <RelativeLayout
+        android:background="@drawable/drawable_frag2"
+        android:layout_marginTop="90dp"
+        android:layout_width="300dp"
+        android:layout_height="320dp"
+        android:layout_centerHorizontal="true">
+
+    <ProgressBar
+        android:layout_marginTop="5dp"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/drawable_circle_dark"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/drawable_circle"
+        android:rotation="-90" />
+
+    <EditText
+        android:id="@+id/editTextMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:hint="Minute"
+        android:inputType="number"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:minEms="5"
+        android:singleLine="false"
+        android:text="1"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHint="@android:color/holo_orange_light" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editTextMinute"
+        android:text="00:01:00"
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_orange_light" />
+
+    <ImageView
+        android:id="@+id/imageviewReset"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textViewTime"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/icon_reset"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageviewStartStop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icon_start"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

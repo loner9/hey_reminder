@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Hey</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="message_minutes">Masukkan menit</string>
+    <string name="auth_token">Token anda</string>
+    <string name="min">MIN</string>
+    <string name="sen">SEN</string>
+    <string name="sel">SEL</string>
+    <string name="rab">RAB</string>
+    <string name="kam">KAM</string>
+    <string name="jum">JUM</string>
+    <string name="sab">SAB</string>
+    <string name="last_date">30</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
