@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import info.project.hey.R;
 
 
-public class DuaFragment extends Fragment implements View.OnClickListener{
+public class TimerFragment extends Fragment implements View.OnClickListener{
 
     private long timeCountInMilliSec = 1 * 60000;
     private enum TimerStatus{
@@ -25,7 +25,7 @@ public class DuaFragment extends Fragment implements View.OnClickListener{
         STOPPED
     }
 
-    public DuaFragment() {
+    public TimerFragment() {
         // Required empty public constructor
     }
 

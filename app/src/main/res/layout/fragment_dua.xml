@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="info.project.hey.Fragments.DuaFragment">
+    tools:context="info.project.hey.Fragments.TimerFragment">
     <RelativeLayout
         android:background="@drawable/drawable_frag2"
         android:layout_marginTop="90dp"

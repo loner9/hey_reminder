@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="info.project.hey">
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".StuActivity"/>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity">
+        <activity android:name=".Class.Alert"></activity>
+        <activity android:name=".EditTaskAct" />
+        <activity android:name=".NewTaskAct" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".TeaActivity" />
+        <activity android:name=".StuActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

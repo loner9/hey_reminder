@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/acc_bal_m"
-        android:icon="@drawable/iconsetting"
-        android:title="account_balance"
-        app:showAsAction="always"></item>
-    <item
-        android:id="@+id/regiser_m"
-        android:icon="@drawable/iconmaleuserfilled"
-        android:title="Login/Register"
-        app:showAsAction="always"></item>
+        android:id="@+id/keluar"
+        android:title="Keluar"
+        app:showAsAction="never"/>
 
 </menu>

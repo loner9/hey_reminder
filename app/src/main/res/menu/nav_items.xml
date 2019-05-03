@@ -3,15 +3,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_item_satu"
-            android:title="item 1"
+            android:title="Kontak"
             android:checked="true"/>
         <item
             android:id="@+id/nav_item_dua"
-            android:title="item 2"
+            android:title="@string/tutorial"
             android:checked="true"/>
         <item
             android:id="@+id/nav_item_tiga"
-            android:title="item 3"
+            android:title="@string/bantuan"
+            android:checked="true"/>
+        <item
+            android:id="@+id/nav_item_empat"
+            android:title="@string/tentang"
             android:checked="true"/>
     </group>
 </menu>

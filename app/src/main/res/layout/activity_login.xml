@@ -19,6 +19,7 @@
         android:drawableStart="@drawable/ic_person_white_24dp"
         android:drawablePadding="10dp"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textColorHighlight="#ffffff"/>
@@ -33,6 +34,7 @@
         android:drawableStart="@drawable/ic_lock_white_24dp"
         android:drawablePadding="10dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textColorHighlight="#ffffff"/>
@@ -77,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
         android:background="@null"
-        android:text="Sudah punya akun?"
+        android:text="Belum punya akun?"
         android:textAllCaps="false"
         android:textColor="@android:color/white"/>
 

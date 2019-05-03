@@ -8,6 +8,20 @@
     android:gravity="center"
     android:padding="20dp">
 
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/filled_non"
+        android:drawableStart="@drawable/ic_lock_white_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textColorHighlight="#ffffff"/>
 
     <EditText
         android:id="@+id/email"
@@ -18,6 +32,7 @@
         android:background="@drawable/filled_non"
         android:drawableStart="@drawable/ic_person_white_24dp"
         android:drawablePadding="10dp"
+        android:inputType="textEmailAddress"
         android:hint="Email"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
@@ -33,27 +48,25 @@
         android:drawableStart="@drawable/ic_lock_white_24dp"
         android:drawablePadding="10dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
         android:textColorHighlight="#ffffff"/>
 
-    <LinearLayout
+    <Spinner
+        android:id="@+id/level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/filled_white"
+        android:entries="@array/items_level"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember Me"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="0dp"
-            android:textColor="#ffffff"
-            android:checked="true"/>
+    </Spinner>
 
-    </LinearLayout>
 
     <Button
         android:id="@+id/btn_signup"
