@@ -21,11 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import info.project.hey.Class.AlarmScheduler;
+
 public class EditTaskAct extends AppCompatActivity {
 
     EditText judulevnt, ketevnt;
     TextView wktevnt, tglevnt;
-    Switch alrmActiv;
+
     Button btnSave,btnDelete;
     DatabaseReference reference;
     FirebaseDatabase mDatabase;
@@ -36,7 +38,6 @@ public class EditTaskAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        alrmActiv = findViewById(R.id.active);
         judulevnt = findViewById(R.id.titledoes);
         ketevnt = findViewById(R.id.descdoes);
         wktevnt = findViewById(R.id.time);
@@ -47,6 +48,7 @@ public class EditTaskAct extends AppCompatActivity {
 
         judulevnt.setText(getIntent().getStringExtra("judulevnt"));
         ketevnt.setText(getIntent().getStringExtra("ketevnt"));
+        wktevnt.setText(getIntent().getStringExtra("wktevnt"));
         tglevnt.setText(getIntent().getStringExtra("tglevnt"));
 
         final String keyevnt = getIntent().getStringExtra("keyevnt");
@@ -55,6 +57,7 @@ public class EditTaskAct extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         String uid = user.getUid();
         reference = mDatabase.getReference("Tasks").child(uid).child("Task"+keyevnt);
+//        reference = mDatabase.getReference().getRoot();
         save();
         delete();
     }

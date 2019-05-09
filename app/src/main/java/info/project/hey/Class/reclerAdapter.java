@@ -41,6 +41,7 @@ public class reclerAdapter extends RecyclerView.Adapter<reclerAdapter.MyHolderVi
         final String getKetevnt = myEvents.get(position).getKetevnt();
         final String getWktevnt = myEvents.get(position).getWktevnt();
         final String getTglevnt = myEvents.get(position).getTglevnt();
+        final Long getIdTask = myEvents.get(position).getIdTask();
         final String getKeyevnt = myEvents.get(position).getKeyevnt();
 
         myHolderView.itemView.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,8 @@ public class reclerAdapter extends RecyclerView.Adapter<reclerAdapter.MyHolderVi
                 aa.putExtra("judulevnt", getJudulevnt);
                 aa.putExtra("ketevnt", getKetevnt);
                 aa.putExtra("tglevnt", getTglevnt);
+                aa.putExtra("wktevnt",getWktevnt);
+                aa.putExtra("idTask", getIdTask);
                 aa.putExtra("keyevnt", getKeyevnt);
                 aa.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(aa);
@@ -75,7 +78,7 @@ public class reclerAdapter extends RecyclerView.Adapter<reclerAdapter.MyHolderVi
     }
 
     class MyHolderView extends RecyclerView.ViewHolder{
-        TextView judulevnt,ketevnt,wktevnt,tglevnt,keyevnt,active;
+        TextView judulevnt,ketevnt,wktevnt,tglevnt,keyevnt;
 
         public MyHolderView(View itemView){
             super(itemView);

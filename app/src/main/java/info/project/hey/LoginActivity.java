@@ -54,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Selamat Datang", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -65,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+        } else {
+            Toast.makeText(LoginActivity.this, "Selamat Datang", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                             }
                                         });
 
-                                    }else {
+                                    } else {
                                         Toast.makeText(LoginActivity.this, "Autentikasi gagal", Toast.LENGTH_SHORT).show();
 
                                     }

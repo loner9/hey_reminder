@@ -97,11 +97,10 @@
 
                 <EditText
                     android:id="@+id/descdoes"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:textColorHint="#B5B5B5"
-                    android:maxLength="25"
                     android:textColor="@color/colorPrimaryDark"
                     android:hint="@string/nmKet"
                     android:layout_width="match_parent"
@@ -135,39 +134,25 @@
                         android:id="@+id/time"
                         android:textColorHint="#B5B5B5"
                         android:hint="@string/wkt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="12dp"/>
-
-                    <Button
-                        android:id="@+id/btn_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/time"
-                        android:layout_toEndOf="@+id/time"
-                        android:text="Pilih waktu" />
+                        android:padding="12dp"
+                        android:inputType="time" />
 
                     <EditText
                         android:id="@+id/date"
                         android:textColorHint="#B5B5B5"
                         android:hint="@string/tgl"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="12dp"
                         android:layout_below="@+id/time"
-                        android:layout_alignParentStart="true"/>
+                        android:layout_alignParentStart="true"
+                        android:inputType="date" />
 
-                    <Button
-                        android:id="@+id/btn_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/date"
-                        android:layout_toEndOf="@+id/date"
-                        android:text="Pilih Tanggal" />
                 </RelativeLayout>
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="16dp"
@@ -190,6 +175,7 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
 
         </LinearLayout>
 

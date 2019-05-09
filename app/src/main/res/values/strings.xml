@@ -21,11 +21,14 @@
     <string name="ketTgas">Keterangan</string>
     <string name="nmKet">Deskripsi?</string>
     <string name="wktTgas">Tenggat Waktu</string>
-    <string name="wkt">Waktu</string>
-    <string name="tgl">Tanggal</string>
+    <string name="wkt">Waktu - Tap dua kali</string>
+    <string name="tgl">Tanggal - Tap dua kali</string>
     <string name="titttle">judul</string>
     <string name="alert_content">isi</string>
     <string name="title">title</string>
     <string name="ok">ok</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

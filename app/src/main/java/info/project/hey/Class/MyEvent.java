@@ -1,34 +1,27 @@
 package info.project.hey.Class;
 
 public class MyEvent {
-    public String judulevnt,ketevnt,wktevnt,tglevnt,keyevnt,active;
+    public String judulevnt,ketevnt,wktevnt,tglevnt,keyevnt;
+    Long idTask;
 
     public MyEvent() {
     }
 
-    public MyEvent(String judulevnt, String ketevnt,String wktevnt, String tglevnt, String keyevnt,String active) {
+    public MyEvent(String judulevnt, String ketevnt,String wktevnt, String tglevnt, String keyevnt,Long idTask) {
         this.judulevnt = judulevnt;
         this.ketevnt = ketevnt;
         this.wktevnt = wktevnt;
         this.tglevnt = tglevnt;
         this.keyevnt = keyevnt;
-        this.active = active;
+        this.idTask = idTask;
     }
 
-    public String getActive() {
-        return active;
+    public Long getIdTask() {
+        return idTask;
     }
 
-    public void setActive(String active) {
-        this.active = active;
-    }
-
-    public String getWktevnt() {
-        return wktevnt;
-    }
-
-    public void setWktevnt(String wktevnt) {
-        this.wktevnt = wktevnt;
+    public void setIdTask(Long idTask) {
+        this.idTask = idTask;
     }
 
     public String getKeyevnt() {
@@ -53,6 +46,14 @@ public class MyEvent {
 
     public void setKetevnt(String ketevnt) {
         this.ketevnt = ketevnt;
+    }
+
+    public String getWktevnt() {
+        return wktevnt;
+    }
+
+    public void setWktevnt(String wktevnt) {
+        this.wktevnt = wktevnt;
     }
 
     public String getTglevnt() {
