@@ -2,20 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_item_satu"
-            android:title="Kontak"
-            android:checked="true"/>
+            android:id="@+id/setremainder"
+            android:icon="@drawable/ic_add_box_blue_24dp"
+            android:title="Setel Reminder" />
         <item
-            android:id="@+id/nav_item_dua"
-            android:title="@string/tutorial"
-            android:checked="true"/>
-        <item
-            android:id="@+id/nav_item_tiga"
-            android:title="@string/bantuan"
-            android:checked="true"/>
-        <item
-            android:id="@+id/nav_item_empat"
-            android:title="@string/tentang"
-            android:checked="true"/>
+            android:id="@+id/timer"
+            android:icon="@drawable/ic_access_time_blue_24dp"
+            android:title="Timer" />
     </group>
+
+    <item android:title="Komunikasi">
+        <menu>
+            <item
+                android:id="@+id/pesan"
+                android:icon="@drawable/ic_reply_24dp"
+                android:title="Perpesanan" />
+        </menu>
+    </item>
+    <item android:title="Lain-lain">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/help"
+                    android:icon="@android:drawable/ic_menu_help"
+                    android:title="Bantuan" />
+                <item
+                    android:id="@+id/about"
+                    android:icon="@android:drawable/ic_dialog_info"
+                    android:title="Tentang"/>
+            </group>
+        </menu>
+    </item>
 </menu>

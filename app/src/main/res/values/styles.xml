@@ -17,8 +17,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="MenuStyle" parent="Theme.AppCompat.Light">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
     <style name="MyMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="MyMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog"/>
 
 </resources>

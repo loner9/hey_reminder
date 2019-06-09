@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/discard_reminder"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Abaikan Pengingat"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/save_reminder"
+        android:icon="@drawable/ic_edit_blue_24dp"
+        android:title="Simpan Pengingat"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -18,11 +18,12 @@
     <string name="tgsNew">Buat Tugas Baru</string>
     <string name="jdulTgas">Tambahkan Judul</string>
     <string name="nmJdul">Apa yang kamu lakukan?</string>
-    <string name="ketTgas">Keterangan</string>
+    <string name="SetRep">Ulangi</string>
     <string name="nmKet">Deskripsi?</string>
     <string name="wktTgas">Tenggat Waktu</string>
-    <string name="wkt">Waktu - Tap dua kali</string>
-    <string name="tgl">Tanggal - Tap dua kali</string>
+    <string name="wkt">Tanggal Pengingat</string>
+    <string name="tgl">Waktu Pengingat</string>
+    <string name="tglAkhir">Waktu Akhir Pengingat</string>
     <string name="titttle">judul</string>
     <string name="alert_content">isi</string>
     <string name="title">title</string>
@@ -30,5 +31,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
 
 </resources>
