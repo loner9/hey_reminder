@@ -15,13 +15,33 @@
             android:id="@+id/toolbarmain"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/custom_app_bar_layout"
+            android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_reminder" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_reminder" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="end|bottom">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addreminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/colorMyMessage"
+            android:src="@drawable/ic_add_white_24dp" />
+    </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

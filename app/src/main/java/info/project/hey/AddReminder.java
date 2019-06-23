@@ -20,11 +20,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import info.project.hey.Class.RemindDaBase;
 import info.project.hey.Class.Reminder;
@@ -50,6 +55,9 @@ public class AddReminder extends AppCompatActivity implements
     private String mRepeatNo;
     private String mRepeatType;
     private String mActive;
+
+    FirebaseAuth auth;
+    DatabaseReference reference;
 
     private static final String KEY_TITLE = "title_key";
     private static final String KEY_TIME = "time_key";

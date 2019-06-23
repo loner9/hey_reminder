@@ -8,16 +8,45 @@
 
     <include
         layout="@layout/app_bar_layout"
-        android:id="@+id/find_friends_toolbar"
-        >
+        android:id="@+id/find_friends_toolbar">
     </include>
+
+    <EditText
+        android:id="@+id/search_users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/find_friends_toolbar"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@+id/search_btn"
+        android:ems="10"
+        android:hint="Cari disini"
+        android:inputType="textPersonName"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:textColor="#999999"
+        android:textSize="16sp"
+        android:layout_below="@id/find_friends_toolbar"/>
+
+    <ImageButton
+        android:id="@+id/search_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/search_users"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/search_users"
+        android:layout_marginRight="30dp"
+        android:background="#FAFAFA"
+        android:src="@drawable/ic_search_blue_24dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/find_friends_recycler_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/find_friends_toolbar"
+        android:layout_below="@id/search_users"
         android:layout_centerVertical="true" />
 
 </RelativeLayout>

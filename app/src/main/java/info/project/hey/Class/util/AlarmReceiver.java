@@ -21,7 +21,6 @@ import info.project.hey.Class.RemindDaBase;
 import info.project.hey.Class.Reminder;
 import info.project.hey.EditReminder;
 import info.project.hey.R;
-import info.project.hey.TimerAct;
 
 public class AlarmReceiver extends BroadcastReceiver {
     AlarmManager alarmManager;

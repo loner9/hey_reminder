@@ -145,7 +145,7 @@ public class GroupChatActivity extends AppCompatActivity {
         String messageKey = groupNameRef.push().getKey();
 
         if(TextUtils.isEmpty(message)){
-            Toast.makeText(this, "Please write message first...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ketik pesan terlebih dahulu...", Toast.LENGTH_SHORT).show();
         }
         else{
             Calendar calForDate = Calendar.getInstance();

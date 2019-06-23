@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,8 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amulyakhare.textdrawable.TextDrawable;
-import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.bignerdranch.android.multiselector.ModalMultiSelectorCallback;
 import com.bignerdranch.android.multiselector.MultiSelector;
 import com.bignerdranch.android.multiselector.SwappingHolder;
@@ -48,13 +44,11 @@ import java.util.List;
 
 import info.project.hey.Class.RemindDaBase;
 import info.project.hey.Class.Reminder;
-import info.project.hey.Class.Model.Users;
 import info.project.hey.Class.util.AlarmReceiver;
 import info.project.hey.Class.util.DaTiSorter;
 
 
-public class StuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class StuActivity extends AppCompatActivity{
     private RecyclerView mList;
     private SimpleAdapter mAdapter;
     private TextView mNoReminderView;
@@ -83,13 +77,9 @@ public class StuActivity extends AppCompatActivity
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users user = dataSnapshot.getValue(Users.class);
-                navigationView = findViewById(R.id.nav_view);
                 View headLayout = navigationView.getHeaderView(0);
 
-                name = headLayout.findViewById(R.id.usernametxt);
                 email = headLayout.findViewById(R.id.useremailtxt);
-                name.setText(user.getUsername());
                 email.setText(auth.getCurrentUser().getEmail());
 
             }
@@ -114,14 +104,6 @@ public class StuActivity extends AppCompatActivity
             mNoReminderView.setVisibility(View.VISIBLE);
             Toast.makeText(this, "Belum ada data", Toast.LENGTH_SHORT).show();
         }
-
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                toolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mActionBarDrawerToggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         mList.setLayoutManager(getLayoutManager());
         registerForContextMenu(mList);
@@ -210,10 +192,31 @@ public class StuActivity extends AppCompatActivity
         startActivityForResult(i, 1);
     }
 
+    private void updateToken(String token){
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mAdapter.setItemCount(getDefaultItemCount());
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Task<InstanceIdResult> token = FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(StuActivity.this,new OnSuccessListener<InstanceIdResult>() {
+//            @Override
+//            public void onSuccess(InstanceIdResult instanceIdResult) {
+//                String newToken = instanceIdResult.getToken();
+//
+//
+//            }
+//        });
+//
+//
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child("deviceToken");
+//        reference.setValue(token.getResult().getToken());
+//    }
 
     @Override
     public void onResume(){
@@ -464,17 +467,6 @@ public class StuActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-        finishAffinity();
-    }
-
     // Setup menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -489,7 +481,7 @@ public class StuActivity extends AppCompatActivity
 
                             finish();
                             rb.deleteAll();
-                            Intent intent = new Intent(this, MainActivity.class);
+                            Intent intent = new Intent(this, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                             startActivity(intent);
                         })
@@ -503,32 +495,5 @@ public class StuActivity extends AppCompatActivity
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        int id = menuItem.getItemId();
-
-        if (id == R.id.setremainder) {
-            Intent a = new Intent(StuActivity.this,AddReminder.class);
-            a.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(a);
-        } else if (id == R.id.timer) {
-            Intent a = new Intent(StuActivity.this,TimerAct.class);
-            a.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(a);
-        } else if (id == R.id.pesan) {
-            Intent a = new Intent(StuActivity.this,ChatActivity.class);
-            a.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(a);
-        } else if (id == R.id.help) {
-            Toast.makeText(StuActivity.this,"Belum dicoding hehe",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.about) {
-            Toast.makeText(StuActivity.this,"Belum dicoding hehe",Toast.LENGTH_SHORT).show();
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }

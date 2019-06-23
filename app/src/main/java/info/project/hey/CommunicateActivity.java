@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -67,18 +70,47 @@ public class CommunicateActivity extends AppCompatActivity {
         mTabLayout = findViewById(R.id.main_tabs);
         mTabLayout.setupWithViewPager(mViewPaper);
 
+        String currentUserID = mAuth.getCurrentUser().getUid();
+        rootRef.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!(dataSnapshot.child("deviceToken").exists())){
+                    userToken();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
     protected void onStart(){
         super.onStart();
 
-            VerifyUserExistance();
-            updateUserStatus("online");
+        VerifyUserExistance();
+        updateUserStatus("online");
     }
 
+    private void userToken(){
+        Task<InstanceIdResult> token = FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(CommunicateActivity.this,new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+
+            }
+        });
 
 
+        FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
+        assert fuser != null;
+        String userid = fuser.getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userid).child("deviceToken");
+        reference.setValue(token.getResult().getToken());
+    }
 
     private void VerifyUserExistance() {
         String currentUserID = mAuth.getCurrentUser().getUid();
@@ -192,6 +224,5 @@ public class CommunicateActivity extends AppCompatActivity {
         currentUserId = currentUser.getUid();
         rootRef.child("Users").child(currentUserId).child("userState")
                 .updateChildren(onlineStateMap);
-
     }
 }

@@ -136,6 +136,7 @@ public class SettingsActivity extends AppCompatActivity {
             profileMap.put("uid", currentUserID);
             profileMap.put("name", setUserName);
             profileMap.put("status", setStatus);
+            profileMap.put("search", setUserName.toLowerCase());
 
             rootRef.child("Users").child(currentUserID).updateChildren(profileMap)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -155,13 +156,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void InitializeFields() {
-        changePassword = (Button) findViewById(R.id.change_password_button);
-        updateAccountSettings = (Button) findViewById(R.id.update_settings_button);
-        userName = (EditText) findViewById(R.id.set_user_name);
-        userStatus = (EditText) findViewById(R.id.set_profile_status);
-        userProfileImage = (CircleImageView) findViewById(R.id.set_profile_image);
+        changePassword = findViewById(R.id.change_password_button);
+        updateAccountSettings = findViewById(R.id.update_settings_button);
+        userName = findViewById(R.id.set_user_name);
+        userStatus = findViewById(R.id.set_profile_status);
+        userProfileImage = findViewById(R.id.set_profile_image);
         loadingBar = new ProgressDialog(this);
-        settingsToolbar = (Toolbar)findViewById(R.id.settings_toolbar);
+        settingsToolbar = findViewById(R.id.settings_toolbar);
         setSupportActionBar(settingsToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

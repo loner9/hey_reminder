@@ -53,7 +53,7 @@ public class RequestFragment extends Fragment {
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
         contactsRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
         requestsFragmentView = inflater.inflate(R.layout.fragment_request, container, false);
-        mRequestsList = (RecyclerView)requestsFragmentView.findViewById(R.id.chat_requests_list);
+        mRequestsList = requestsFragmentView.findViewById(R.id.chat_requests_list);
         mRequestsList.setLayoutManager(new LinearLayoutManager(getContext()));
         return requestsFragmentView;
     }
@@ -87,7 +87,7 @@ public class RequestFragment extends Fragment {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.hasChild("image")){
                                                     final String requestProfileImage = dataSnapshot.child("image").getValue().toString();
-                                                    Picasso.get().load(requestProfileImage).placeholder(R.mipmap.ic_launcher_round).into(holder.profileImage);
+                                                    Picasso.get().load(requestProfileImage).placeholder(R.drawable.people).into(holder.profileImage);
                                                 }
 
                                                 final String requestUserName = dataSnapshot.child("name").getValue().toString();
@@ -249,7 +249,7 @@ public class RequestFragment extends Fragment {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.hasChild("image")){
                                                     final String requestProfileImage = dataSnapshot.child("image").getValue().toString();
-                                                    Picasso.get().load(requestProfileImage).placeholder(R.mipmap.ic_launcher_round).into(holder.profileImage);
+                                                    Picasso.get().load(requestProfileImage).placeholder(R.drawable.people).into(holder.profileImage);
                                                 }
 
                                                 final String requestUserName = dataSnapshot.child("name").getValue().toString();

@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,12 @@ public class ChatFragment extends Fragment {
 
         chatsRef = FirebaseDatabase.getInstance().getReference().child("Contacts").child(currentUserId);
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        chatsList = (RecyclerView)privateChatsView.findViewById(R.id.chats_list);
+        chatsList = privateChatsView.findViewById(R.id.chats_list);
         chatsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        RecyclerView.ItemAnimator animator = chatsList.getItemAnimator();
+        if (animator instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
         return privateChatsView;
     }
 
@@ -83,27 +88,9 @@ public class ChatFragment extends Fragment {
                                 }
 
                                 final String userName = dataSnapshot.child("name").getValue().toString();
-                                final String userStatus = dataSnapshot.child("status").getValue().toString();
+                                final String userLevel = dataSnapshot.child("level").getValue().toString();
                                 holder.userName.setText(userName);
-
-                                if(dataSnapshot.child("userState").hasChild("state")){
-                                    String state = dataSnapshot.child("userState").child("state").getValue().toString();
-                                    String date = dataSnapshot.child("userState").child("date").getValue().toString();
-                                    String time = dataSnapshot.child("userState").child("time").getValue().toString();
-
-                                    if(state.equals("online")){
-                                        holder.userStatus.setText("Online");
-                                        holder.userOnlineStatus.setImageResource(R.drawable.online);
-                                    }
-                                    else if(state.equals("offline")){
-                                        holder.userStatus.setText("Last Active\n"+ date + " " + time);
-                                        holder.userOnlineStatus.setImageResource(R.drawable.offline);
-                                    }
-                                }
-                                else{
-                                    holder.userStatus.setText("Offline");
-                                }
-
+                                holder.userStatus.setText(userLevel);
 
                                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                                     @Override

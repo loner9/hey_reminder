@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tugas"
+        android:icon="@drawable/ic_assignment_blue_24dp"
+        android:title="Reminder"/>
+    <item
+        android:id="@+id/perpesanan"
+        android:icon="@drawable/ic_group_24dp"
+        android:title="Tanya" />
+    <item
+        android:id="@+id/tugase"
+        android:icon="@drawable/ic_class_24dp"
+        android:title="Tugas" />
+    <item
+        android:id="@+id/pewaktu"
+        android:icon="@drawable/ic_timer_24dp"
+        android:title="Timer" />
+    <item
+        android:id="@+id/other"
+        android:icon="@drawable/ic_more_24dp"
+        android:title="Lain" />
+</menu>

@@ -46,11 +46,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         receiverUserId = getIntent().getExtras().get("visitUserId").toString();
 
-
-        userProfileImage = (CircleImageView) findViewById(R.id.visit_profile_image);
-        userProfileName = (TextView) findViewById(R.id.visit_user_name);
-        userProfileStatus = (TextView) findViewById(R.id.visit_profile_status);
-        sendMessageRequestButton = (Button) findViewById(R.id.send_message_request_button);
+        userProfileImage = findViewById(R.id.visit_profile_image);
+        userProfileName = findViewById(R.id.visit_user_name);
+        userProfileStatus = findViewById(R.id.visit_profile_status);
+        sendMessageRequestButton = findViewById(R.id.send_message_request_button);
         sendMessageRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("image"))) {
                     String userImage = dataSnapshot.child("image").getValue().toString();
-                    Picasso.get().load(userImage).placeholder(R.mipmap.ic_launcher_round).into(userProfileImage);
+                    Picasso.get().load(userImage).placeholder(R.drawable.people).into(userProfileImage);
                 }
 
                 String userName = dataSnapshot.child("name").getValue().toString();

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/perpesanan"
+        android:icon="@drawable/ic_group_24dp"
+        android:title="Kominukasi" />
+    <item
+        android:id="@+id/snd_tugs"
+        android:icon="@drawable/ic_assignment_blue_24dp"
+        android:title="Kirim Tugas" />
+    <item
+        android:id="@+id/other"
+        android:icon="@drawable/ic_more_24dp"
+        android:title="Lain" />
+</menu>

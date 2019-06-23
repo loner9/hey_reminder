@@ -9,21 +9,6 @@
     android:padding="20dp">
 
     <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/filled_non"
-        android:drawableStart="@drawable/ic_person_white_24dp"
-        android:drawablePadding="10dp"
-        android:hint="Username"
-        android:inputType="text"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        android:textColorHighlight="#ffffff"/>
-
-    <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

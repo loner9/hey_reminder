@@ -1,71 +1,128 @@
 package info.project.hey;
 
-import android.support.design.widget.TabLayout;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import info.project.hey.Fragments.BoardTeaFragment;
-import info.project.hey.Fragments.InfoFragment;
-import info.project.hey.R;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
-public class TeaActivity extends AppCompatActivity {
+import info.project.hey.Fragments.ChatFragment;
+import info.project.hey.Fragments.CommunicateFrag;
+import info.project.hey.Fragments.MenuFragment;
+import info.project.hey.Fragments.SndTaskFragment;
 
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
+public class TeaActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
+    private FirebaseUser currentUser;
+    private FirebaseAuth mAuth;
+    private DatabaseReference rootRef;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea);
+        loadFragment(new CommunicateFrag());
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        rootRef = FirebaseDatabase.getInstance().getReference();
 
-        viewPager = findViewById(R.id.viewpagr);
-        setupViewPager(viewPager);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        tabLayout = findViewById(R.id.tablayut);
-        tabLayout.setupWithViewPager(viewPager);
+//        updateUserStatus("online");
+        VerifyUserExistance();
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new BoardTeaFragment(), "MAIN");
-        adapter.addFragment(new InfoFragment(), "TIMER");
-        viewPager.setAdapter(adapter);
+    private void updateUserStatus(String state){
+        Calendar calendar = Calendar.getInstance();
+        String saveCurrentUserTime, saveCurrentUserDate;
+        SimpleDateFormat currentDate  = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentUserDate = currentDate.format(calendar.getTime());
+        SimpleDateFormat currentTime  = new SimpleDateFormat("hh:mm ss");
+        saveCurrentUserTime = currentTime.format(calendar.getTime());
+
+        HashMap<String, Object> onlineStateMap = new HashMap<>();
+
+        onlineStateMap.put("time", saveCurrentUserTime);
+        onlineStateMap.put("date", saveCurrentUserDate);
+        onlineStateMap.put("state", state);
+
+        currentUserId = currentUser.getUid();
+        rootRef.child("Users").child(currentUserId).child("userState")
+                .updateChildren(onlineStateMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(TeaActivity.this, "Selamat Datang", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    private void VerifyUserExistance() {
+        String currentUserID = mAuth.getCurrentUser().getUid();
+        rootRef.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!(dataSnapshot.child("name").exists())){
+                    SendUserToSettingsActivity();
+                }
+            }
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
+            }
+        });
+    }
 
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
+    private void SendUserToSettingsActivity() {
+        Intent settingsIntent = new Intent(TeaActivity.this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, fragment)
+                    .commit();
+            return true;
         }
+        return false;
+    }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Fragment fragment = null;
+        switch (menuItem.getItemId()){
+            case R.id.perpesanan:
+                fragment = new CommunicateFrag();
+                break;
+            case R.id.snd_tugs:
+                fragment = new SndTaskFragment();
+                break;
+            case R.id.other:
+                BottomSheetDialogFragment bottom = new MenuFragment();
+                bottom.show(getSupportFragmentManager(),bottom.getTag());
+                break;
         }
+        return loadFragment(fragment);
     }
 }

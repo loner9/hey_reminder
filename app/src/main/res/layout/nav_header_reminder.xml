@@ -22,13 +22,6 @@
         app:srcCompat="@drawable/ic_person_white_24dp" />
 
     <TextView
-        android:id="@+id/usernametxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
         android:id="@+id/useremailtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

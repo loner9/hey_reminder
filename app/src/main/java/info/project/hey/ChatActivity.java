@@ -45,7 +45,6 @@ public class ChatActivity extends AppCompatActivity {
     private Toolbar chatToolBar;
     private String messageReceiverID, messageReceiverName, messageReceiverImage, messageSenderID;
     private TextView userName;
-    private CircleImageView userImage;
 
     private ImageButton sendMessageBtn;
     private EditText messageInputText;
@@ -79,7 +78,6 @@ public class ChatActivity extends AppCompatActivity {
         InitializeControllers();
 
         userName.setText(messageReceiverName);
-        Picasso.get().load(messageReceiverImage).placeholder(R.mipmap.ic_launcher_round).into(userImage);
 
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +90,7 @@ public class ChatActivity extends AppCompatActivity {
     private void SendMessage() {
         String messageText = messageInputText.getText().toString();
         if(TextUtils.isEmpty(messageText)){
-            Toast.makeText(this, "first write your message...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Tulis pesan terlebih dahulu...", Toast.LENGTH_LONG).show();
         }
         else {
             Calendar calForTime = Calendar.getInstance();
@@ -123,7 +121,7 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(ChatActivity.this, "Message Sent Successfully...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ChatActivity.this, "Pesan Terkirim dengan sukses..", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         Toast.makeText(ChatActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -148,7 +146,6 @@ public class ChatActivity extends AppCompatActivity {
 
         actionBar.setCustomView(actionBarView);
 
-        userImage = findViewById(R.id.custom_profile_image);
         userName = findViewById(R.id.custom_profile_name);
 
         sendMessageBtn = findViewById(R.id.send_message_btn);
